@@ -1,271 +1,139 @@
-# mac-setup
+# mac 
 
-## System Preferences
 
-#### Trackpad
+## # Packages
 
-* Point & Click
-
-  * Look up & data detectors with *Tap with three fingers*
-  * Tap to click with *Tap with one finger*
-  * Tracking Speed to *Fast*
-
-#### Dock
-
-* Check *Automatically hide and show the Dock*
-
-#### Display
-
-* Night Shift
-
- * Check *Turn On Until Tomorrow*
-
-#### Users & Groups
-
-* Disable Guest Login
-
-#### Finder
-
-* View
-  * Switch to *as Columns*
-  * Switch to *Arrange by* as *Name*
-  
- * Add Home folder in Sidebar
-  * Open Finder, Press *Command + Shift + H*, then *Command + Up Arrow* and then drag and drop Home folder to side bar.
- 
- * Remove *All My Files* from sidebar by right clicking and selecting *Remove from Sidebar*
-  
-#### Menubar
-
-* Change battery to display percentage
-
-#### Mission Control
-
-* Uncheck *Automatically rearrange Spaces based on most recent use*
-
-#### Keyboard
-
-* Text
-  * Uncheck *Add period with double-space*
-
-## Packages
 
 ### Xcode
 
-```
-xcode-select --install
+```bash
+$ xcode-select --install
 ```
 
 ### Brew
 
-```
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```bash
+$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
 ### Vim
 
-```
-brew install vim
+```bash
+$ brew install vim
 ```
 
-### Generate ssh key
+### Tmux
 
-```
-ssh key-gen
-cat .ssh/id_rsa.pub
+```bash
+$ brew install tmux
 ```
 
 ### Git
 
+```bash
+$ brew install git
 ```
-brew install git
-```
-
-### Iterm2
-
-Download and install iterm2 from [here](https://www.iterm2.com/downloads.html)
-
-#### Iterm2 Preferences
-
-* Profiles
-
- * General
-  * Check *Reuse previous session directory* under *Working Directory*
-
- * Terminal
-  * Check Unlimited Scrollback
- 
- * Follow this [link](https://coderwall.com/p/h6yfda/use-and-to-jump-forwards-backwards-words-in-iterm-2-on-os-x) to jump words backward/forward.
 
 ### Oh My Zsh
 
+```bash
+$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-```
+
+<hr>
+
 
 ### Setup Dotfiles
 
-Setup dotfiles from this [repo](https://github.com/taranjeet/dotfiles)
+- Setup dotfiles from this [repo](https://github.com/inishchith/dotfiles)
 
-```
-git clone https://github.com/taranjeet/dotfiles.git ~/.dotfiles
-```
-
-### Update Zsh Preferences
-
-```
-cp ~/.dotfiles/.gitconfig ~
-
-# edit zsh config
-vim ~/.zshrc
-for file in ~/.dotfiles/.{aliases,functions}; do
-    [ -r "$file" ] && source "$file"
-done
-unset file
-
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-
-# maintain history per tab level
-unsetopt inc_append_history
-unsetopt share_history
+```bash
+$ git clone https://github.com/inishchith/dotfiles.git ~/.dotfiles
 ```
 
-### Sublime
+### [VSCode](https://code.visualstudio.com/)
 
-Download Sublime 3 from [here](https://www.sublimetext.com/3). Setup `subl` alias to open Sublime from command line
+- [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
+- [TODO Highlight](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight)
+- [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+- [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
+- [Visual Studio IntelliCode - Preview](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
+- [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 
-```
-ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
-```
+### Generate ssh key
 
-* Install Package Control from [here](https://packagecontrol.io/installation)
-* Install [Dracula Color Theme](https://draculatheme.com/sublime/) using Package Control
-* Keep the icon for Sublime in Dock by right clicking on the running application, then selecting *Options* and then *Keep in Dock*.
-* Change Sublime Color Scheme by *Sublime Text > Preferences > Settings* and then selecting *Dracula* as the option.
-* Install sublime packages from [dotfiles](https://github.com/taranjeet/dotfiles) repo.
-* Configure Babel to open jsx file as babel intrepreted by following this [link](https://github.com/babel/babel-sublime#setting-as-the-default-syntax)
-
-### Python
-
-```
-brew install python@2
-# check if python and pip both are pointing to version 2
-
-pip install virtualenv
-```
-
-### Node.js
-
-```
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-source ~/.zshrc
-nvm install v8.9
-```
-
-### Youtube dl
-
-```
-brew install youtube-dl
-```
-
-### Flycut
-
-Install flycut from [here](https://github.com/TermiT/Flycut/releases). Update Flycut Preferences as
-
-* Check *Launch FLycut on login*
-
-### Htop
-
-```
-brew install htop
-```
-
-### Wget
-
-```
-brew install wget --with-libressl
-```
-
-### Tree
-
-```
-brew install tree
-```
-
-### Custom Python packages
-
-```
-pip install grip
-```
-
-### Custom Npm packages
-
-```
-npm install -g create-react-app
-```
-
-### Custom folders
-
-```
-mkdir binaries myapps
-```
-
-### Mysql
-
-```
-# install mysql 5.6
-brew install mysql
-brew postinstall mysql
-mysql_secure_installation
-login to shell and run the following query
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+```bash
+$ ssh key-gen
+$ cat .ssh/id_rsa.pub
 ```
 
 ### Java
 
-Download jdk 8 from this [link](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) after accepting the Agreement Terms. Open dmg and follow through the setup process. Check if java is installed properly by running
+- Download jdk 8 from this [link](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) after accepting the Agreement Terms. Open dmg and follow through the setup process. Check if java is installed properly by running
 
-```
-java -version
-```
-
-### Elasticsearch
-
-Download tar file of required version of elasticsearch from [here](https://www.elastic.co/downloads/elasticsearch). When writing this doc, the latest version is *6.3*. Move the tar to `binaries` folder and extract it.
-
-```
-mv ~/Downloads/elasticsearch-6.3.1.tar.gz ~/binaries
-tar -xvzf elasticsearch-6.3.1.tar.gz
-
-# to run
-./bin/elasticsearch
+```bash
+$ java -version
 ```
 
-#### Update Elasticsearch preferences
+### Python
 
-In `config/elasticsearch.yml`, update `cluster.name` to a custom value.
+```bash
+$ brew install python@3
 
-In `config/jvm.options`, remove `-Xms1g` and `-Xmx1g`, and add the following
+# check if python and pip both are pointing to version 3
 
-```
--Xms500m
--Xmx500m
-```
-
-### Kibana
-
-Download the tar file of required version(latest 6.3) from [here](https://www.elastic.co/downloads/kibana). Move the tar to `binaries` folder and extract it.
-
-```
-mv Downloads/kibana-6.3.1-darwin-x86_64.tar.gz binaries/
-tar -xvzf kibana-6.3.1-darwin-x86_64.tar.gz
+$ pip install virtualenv
 ```
 
-### Vlc
+### Node.js
 
-Download vlc from this [link](https://www.videolan.org/vlc/download-macosx.html)
+```bash
+$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+$ source ~/.zshrc
+$ nvm install <version>
+```
+
+### Tree
+
+```bash
+$ brew install tree
+```
 
 ### Evernote
 
-Download evernote from this [link](https://evernote.com/download)
+- Download evernote from this [link](https://evernote.com/download)
+
+### Workflowy
+
+- Download workflowy from this [link](https://workflowy.com)
+
+### Trello
+
+- Download workflowy from this [link](https://trello.com/)
+
+### DaisyDisk
+
+- Download daisydisk from this [link](https://daisydiskapp.com/)
+
+## System Preferences (customize)
+
+- Trackpad
+- Dock
+- Battery
+
+<hr>
+
+## OPTIONAL
+
+### Iterm2
+
+- Download and install iterm2 from [here](https://www.iterm2.com/downloads.html)
+
+#### Iterm2 Preferences
+
+* Profiles
+* General
+* Check *Reuse previous session directory* under *Working Directory*
+* Terminal
+* Check Unlimited Scrollback
+* Follow this [link](https://coderwall.com/p/h6yfda/use-and-to-jump-forwards-backwards-words-in-iterm-2-on-os-x) to jump words backward/forward.
